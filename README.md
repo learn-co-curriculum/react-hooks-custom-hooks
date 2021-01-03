@@ -325,9 +325,52 @@ function ArticlePage() {
 }
 ```
 
+With our custom hooks in place, the completed versions of the `HomePage` and
+`ArticlePage` components are now both significantly shorter. Also, adding new
+components to our application that need access to similar functionality is now
+significantly easier, since we don't have to rewrite that functionality from
+scratch in each new component.
+
+**Note**: While our `useQuery` hook works nicely in this example, there are some
+optimizations we could make to improve it, such as:
+
+- Handling errors with `.catch` and adding an error state
+- Using one state variable instead of
+  [multiple state variables][react state faq], so that it doesn't re-render more
+  than necessary
+- [Using the useReducer hook instead of useState][use-reducer] to manage state
+  transitions
+- [Caching our fetched data][memoization] to prevent unnecessary network requests
+- [Cancel the fetch][fetch cancel] if the component un-mounts before the fetch is
+  complete
+
+You're encouraged to try adding a few of these optimizations to this hook
+yourself! There's also a version of the `useQuery` hook in the solution branch
+called `useQueryAdvanced` that handles some of these optimizations. However,
+there are also more advanced solutions out there, such as
+[React Query][react query], that handles this logic (and more) with a pre-built
+custom hook.
+
 ## Conclusion
+
+Creating custom hooks allows us to share stateful logic across multiple
+components. The ability to use custom hooks lets us create more concise
+components that are focused more on the UI logic. The React community has also
+embraced custom hooks in a big way &mdash; major libraries like
+[React Redux][redux hooks] and [React Router][router hooks] use custom hooks to
+provide a lot of their functionality, and there are lots of
+[community generated custom hooks][awesome hooks] out there to explore and add
+to your projects!
 
 ## Resources
 
 [title]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
 [destructure rename]: https://wesbos.com/destructuring-renaming
+[react state faq]: https://reactjs.org/docs/hooks-faq.html#should-i-use-one-or-many-state-variables
+[use-reducer]: https://reactjs.org/docs/hooks-reference.html#usereducer
+[memoization]: https://flaviocopes.com/javascript-memoization/
+[fetch cancel]: https://davidwalsh.name/cancel-fetch
+[react query]: https://react-query.tanstack.com/
+[router hooks]: https://reactrouter.com/web/api/Hooks
+[redux hooks]: https://react-redux.js.org/api/hooks
+[awesome hooks]: https://github.com/rehooks/awesome-react-hooks
