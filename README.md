@@ -1,6 +1,10 @@
 # Custom Hooks
 
-## Overview
+## Learning Goals
+
+- Refactor existing React code into custom hooks
+
+## Introduction
 
 One of the most powerful features of React hooks is that they give us the
 ability to share logic and state between multiple components by writing our own
@@ -30,7 +34,7 @@ title][title] is an important part of any website, because it:
 
 - is displayed in the browser tab
 - is also displayed in the browser history
-- helps with accessibility and SEO
+- helps with accessibility and search engine optimization (SEO)
 
 Since we have similar logic for updating the title in both of our components
 (and we might want this functionality in other components as our app grows),
@@ -57,8 +61,10 @@ let's review.
 
 So far, any time we've wanted to use a React hook (like `useState` or
 `useEffect`), we've only been able to do so inside of our React components (not
-inside of any other JavaScript functions). **Custom hooks also allow us to call
-React hooks**, so long as we call our custom hook from a React component.
+inside of any other JavaScript functions).
+
+**Custom hooks also allow us to call React hooks**, so long as we call our
+custom hook from a React component.
 
 Another important convention to note here: the name of our custom hook starts
 with the word `use`. This is a signal to React (and ESLint) that our hook should
@@ -310,7 +316,10 @@ function HomePage() {
 }
 ```
 
-Since `useQuery` now accepts a URL for the fetch request, we must pass that URL in when we call the hook. It now also returns an object with a more generic name (`data`), so we can [re-name that variable][destructure rename] to `posts` when destructuring.
+Since `useQuery` now accepts a URL for the fetch request, we must pass that URL
+in when we call the hook. It now also returns an object with a more generic name
+(`data`), so we can [re-name that variable][destructure rename] to `posts` when
+destructuring.
 
 The `useQuery` hook should now also work with our `ArticlePage` component:
 
@@ -347,18 +356,19 @@ optimizations we could make to improve it, such as:
 You're encouraged to try adding a few of these optimizations to this hook
 yourself! There's also a version of the `useQuery` hook in the solution branch
 called `useQueryAdvanced` that handles some of these optimizations. However,
-there are also more advanced solutions out there, such as
-[React Query][react query], that handles this logic (and more) with a pre-built
+there are also pre-built solutions out there, such as
+[React Query][react query], that handle this logic (and more) with a pre-built
 custom hook.
 
 ## Conclusion
 
 Creating custom hooks allows us to share stateful logic across multiple
 components. The ability to use custom hooks lets us create more concise
-components that are focused more on the UI logic. The React community has also
-embraced custom hooks in a big way &mdash; major libraries like
-[React Redux][redux hooks] and [React Router][router hooks] use custom hooks to
-provide a lot of their functionality, and there are lots of
+components that are focused more on the UI logic.
+
+The React community has also embraced custom hooks in a big way &mdash; major
+libraries like [React Redux][redux hooks] and [React Router][router hooks] use
+custom hooks to provide a lot of their functionality, and there are lots of
 [community generated custom hooks][awesome hooks] out there to explore and add
 to your projects!
 
