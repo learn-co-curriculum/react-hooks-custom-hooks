@@ -63,7 +63,7 @@ So far, any time we've wanted to use a React hook (like `useState` or
 `useEffect`), we've only been able to do so inside of our React components (not
 inside of any other JavaScript functions).
 
-**Custom hooks also allow us to call React hooks**, so long as we call our
+**Custom hooks also allow us to call React hooks**, as long as we call our
 custom hook from a React component.
 
 Another important convention to note here: the name of our custom hook starts
