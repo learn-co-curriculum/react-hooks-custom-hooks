@@ -274,7 +274,7 @@ function HomePage() {
 
 Our `HomePage` component is now significantly cleaner, because it no longer has
 to worry about all the logic related to handling the fetch request and setting
-state based on the response &mdash; all of that logic is now nicely encapsulated
+state based on the response — all of that logic is now nicely encapsulated
 in our `useQuery` hook!
 
 In order to get this hook to work with the `ArticlePage` component as well, we
@@ -366,7 +366,7 @@ Creating custom hooks allows us to share stateful logic across multiple
 components. The ability to use custom hooks lets us create more concise
 components that are focused more on the UI logic.
 
-The React community has also embraced custom hooks in a big way &mdash; major
+The React community has also embraced custom hooks in a big way — major
 libraries like [React Redux][redux hooks] and [React Router][router hooks] use
 custom hooks to provide a lot of their functionality, and there are lots of
 [community generated custom hooks][awesome hooks] out there to explore and add
