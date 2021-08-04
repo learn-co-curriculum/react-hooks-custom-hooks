@@ -43,7 +43,7 @@ file for our custom hook: `/src/hooks/useDocumentTitle.js`. Let's take the
 `useEffect` code from the `HomePage` component and place it in that file, inside
 a function called `useDocumentTitle`:
 
-```js
+```jsx
 // src/hooks/useDocumentTitle.js
 import { useEffect } from "react";
 
@@ -76,7 +76,7 @@ a signal to other developers that this code is meant to be used as a React hook.
 Now that we've extracted this custom hook to its own file, we can import it and
 use it in our `HomePage` component:
 
-```js
+```jsx
 import React, { useEffect, useState } from "react";
 import About from "./About";
 import ArticleList from "./ArticleList";
@@ -101,7 +101,7 @@ it just needs to call the `useDocumentTitle` hook, which will handle that work.
 Updating our `ArticlePage` component won't quite work with our new custom hook
 just yet, since the title is dynamic in this component:
 
-```js
+```jsx
 // src/components/ArticlePage.js
 function ArticlePage() {
   //...
@@ -119,7 +119,7 @@ function ArticlePage() {
 To solve this, we can update our `useDocumentTitle` hook to accept an argument
 of the page title:
 
-```js
+```jsx
 function useDocumentTitle(pageTitle) {
   useEffect(() => {
     document.title = pageTitle;
@@ -130,7 +130,7 @@ function useDocumentTitle(pageTitle) {
 Now, both our components can use this custom hook by passing in a page title
 when calling the hook:
 
-```js
+```jsx
 // src/components/ArticlePage.js
 function ArticlePage() {
   //...
@@ -168,7 +168,7 @@ what we'd need to extract in order to build out our custom hook.
 Let's start with the `HomePage` component once again. Here's all of the logic that
 is related to working with our API:
 
-```js
+```jsx
 // src/components/HomePage.js
 function HomePage() {
   // fetch data for posts
@@ -192,7 +192,7 @@ function HomePage() {
 To start off with, let's take all this code out from our `HomePage` component
 and create a new custom hook called `useQuery`, for querying data from our API:
 
-```js
+```jsx
 // src/hooks/useQuery.js
 import { useState, useEffect } from "react";
 
@@ -229,7 +229,7 @@ But how can we get this data **out** of the custom hook? Well, since a custom
 hook is **just a function**, all we need to do is have our hook **return**
 whatever data we need!
 
-```js
+```jsx
 // src/hooks/useQuery.js
 import { useState, useEffect } from "react";
 
@@ -261,7 +261,7 @@ Now, in order to use this custom hook, we can call it from our `HomePage`
 component, and **destructure** the return value to get the `posts` and
 `isLoaded` state out:
 
-```js
+```jsx
 import useQuery from "../hooks/useQuery";
 
 function HomePage() {
@@ -281,7 +281,7 @@ In order to get this hook to work with the `ArticlePage` component as well, we
 need to refactor it a bit and abstract away the logic that is specific to the
 `HomePage` component's needs.
 
-```js
+```jsx
 // take in the url
 function useQuery(url) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -308,7 +308,7 @@ function useQuery(url) {
 Now, to use our more generic version of this hook in the `HomePage` component,
 we just need to make a couple small changes:
 
-```js
+```jsx
 function HomePage() {
   const { data: posts, isLoaded } = useQuery("http://localhost:4000/posts");
 
@@ -323,7 +323,7 @@ destructuring.
 
 The `useQuery` hook should now also work with our `ArticlePage` component:
 
-```js
+```jsx
 function ArticlePage() {
   const { id } = useParams();
   const { data: post, isLoaded } = useQuery(
