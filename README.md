@@ -381,6 +381,6 @@ to your projects!
 [memoization]: https://flaviocopes.com/javascript-memoization/
 [fetch cancel]: https://davidwalsh.name/cancel-fetch
 [react query]: https://react-query.tanstack.com/
-[router hooks]: https://reactrouter.com/web/api/Hooks
+[router hooks]: https://v5.reactrouter.com/web/api/Hooks
 [redux hooks]: https://react-redux.js.org/api/hooks
 [awesome hooks]: https://github.com/rehooks/awesome-react-hooks
